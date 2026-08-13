@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Konkani Konnect — Goa Beach Player</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         BEACH VIDEO — TWO STACKED VIDEOS FOR CROSSFADE
+         Only one has class="active" (opacity 1) at a time.
+         script.js swaps which one is active, and CSS fades
+         the opacity change smoothly.
+    ====================================================== -->
+
+    <video
+        id="bg-video-a"
+        class="bg-video active"
+        muted
+        loop
+        playsinline
+        preload="auto"
+    ></video>
+
+    <video
+        id="bg-video-b"
+        class="bg-video"
+        muted
+        loop
+        playsinline
+        preload="auto"
+    ></video>
+
+
+    <!-- Dark overlay -->
+    <div class="video-overlay"></div>
+
+
+    <!-- =====================================================
+         SMALL FLOATING MUSIC PLAYER
+    ====================================================== -->
+
+    <div
+        class="music-player"
+        id="music-player"
+    >
+
+        <!-- Drag area -->
+        <div
+            class="drag-area"
+            id="drag-area"
+            title="Drag player"
+        >
+
+            <div class="album-container">
+
+                <img
+                    id="cover-art"
+                    class="cover-art"
+                    src="assets/covers/default-cover.svg"
+                    alt="Album cover"
+                >
+
+                <span
+                    class="playing-dot"
+                    id="playing-dot"
+                ></span>
+
+            </div>
+
+
+            <div class="song-info">
+
+                <div
+                    class="song-title"
+                    id="track-title"
+                >
+                    Select a song
+                </div>
+
+                <div
+                    class="song-artist"
+                    id="track-artist"
+                >
+                    —
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PLAYER CONTROLS
+        ================================================== -->
+
+        <div class="player-controls">
+
+            <button
+                id="prev-btn"
+                class="icon-button"
+                type="button"
+                title="Previous"
+            >
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 5h2v14H6zm3 7 10 7V5z"/>
+                </svg>
+            </button>
+
+
+            <button
+                id="play-btn"
+                class="play-button"
+                type="button"
+                title="Play"
+            >
+
+                <svg
+                    id="play-icon"
+                    viewBox="0 0 24 24"
+                >
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+
+
+                <svg
+                    id="pause-icon"
+                    viewBox="0 0 24 24"
+                    style="display:none;"
+                >
+                    <path d="M6 5h4v14H6zm8 0h4v14h-4z"/>
+                </svg>
+
+            </button>
+
+
+            <button
+                id="next-btn"
+                class="icon-button"
+                type="button"
+                title="Next"
+            >
+                <svg viewBox="0 0 24 24">
+                    <path d="M16 5h2v14h-2zM5 5l10 7-10 7z"/>
+                </svg>
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             PROGRESS
+        ================================================== -->
+
+        <div class="progress-container">
+
+            <span id="current-time">
+                0:00
+            </span>
+
+            <div
+                class="progress-bar"
+                id="progress-bar"
+            >
+
+                <div
+                    class="progress-fill"
+                    id="progress-fill"
+                ></div>
+
+                <div
+                    class="progress-knob"
+                    id="progress-knob"
+                ></div>
+
+            </div>
+
+            <span id="duration-time">
+                0:00
+            </span>
+
+        </div>
+
+
+        <!-- =================================================
+             VOLUME
+        ================================================== -->
+
+        <div class="volume-control">
+
+            <svg
+                class="volume-icon"
+                viewBox="0 0 24 24"
+            >
+                <path d="M3 9v6h4l5 5V4L7 9H3z"/>
+            </svg>
+
+            <input
+                id="volume-slider"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.8"
+            >
+
+        </div>
+
+
+        <!-- =================================================
+             PLAYLIST BUTTON
+        ================================================== -->
+
+        <button
+            id="playlist-button"
+            class="playlist-button"
+            type="button"
+            title="Playlist"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <!-- =================================================
+             PLAYLIST
+        ================================================== -->
+
+        <div
+            class="playlist-panel"
+            id="playlist-panel"
+        >
+
+            <div class="playlist-header">
+
+                <div>
+                    <small>KONKANI KONNECT</small>
+                    <strong>Playlist</strong>
+                </div>
+
+                <button
+                    id="close-playlist"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <ul
+                class="playlist"
+                id="playlist"
+            ></ul>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
